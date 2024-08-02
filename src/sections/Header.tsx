@@ -4,7 +4,7 @@ import Image from "next/image";
 import MenuIcon from "@/assets/menu.svg";
 export const Header = () => {
   return (
-    <header className="sticky top-0">
+    <header className="sticky top-0 backdrop-blur-sm">
       <div className="flex justify-center items-center py-3 bg-black text-white text-sm gap-3">
         <p className="text-white/60 hidden md:block">
           Streamline your workflow with our tools
@@ -25,7 +25,7 @@ export const Header = () => {
               <a href="#">Customers</a>
               <a href="#">Updates</a>
               <a href="#">Help</a>
-              <button className="btn"> 
+              <button className="btn btn-primary"> 
                 Get for free
               </button>
             </nav>
