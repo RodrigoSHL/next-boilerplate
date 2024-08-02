@@ -12,5 +12,8 @@
     .btn-text {
         @apply text-black bg-transparent;
     }
+    .logo-tikcer-image {
+        @apply h-8 w-auto;
+    }
 }
 
