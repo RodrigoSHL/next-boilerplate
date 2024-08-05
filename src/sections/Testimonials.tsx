@@ -66,5 +66,17 @@ const testimonials = [
 ];
 
 export const Testimonials = () => {
-  return null;
+  return (
+    <section className="bg-white py-0">
+      <div className="container">
+        <div className="flex justify-center">
+          <div className="tag">Testimonials</div>
+        </div>
+        <h2 className="section-title mt-5"> What our users say</h2>
+        <p className="section-description mt-5">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, consequatur! Iure, aut perspiciatis. Voluptatibus similique corrupti quia aut, adipisci aperiam.
+        </p>
+      </div>
+    </section>
+  );
 };
