@@ -1,7 +1,10 @@
+'use client';
+
 import ArrowRight from '@/assets/arrow-right.svg';
 import cogImage from '@/assets/cog.png';
 import cylinder from '@/assets/cylinder.png';
 import noodle from '@/assets/noodle.png';
+import { motion } from 'framer-motion';
 
 import Image from 'next/image';
 
@@ -29,9 +32,23 @@ export const Hero = () => {
             </div>
           </div>
           <div className='mt-20 md:mt-0 md:h-[648px] md:flex-1 relative'>
-            <Image src={cogImage} alt="cog" className='md:absolute md:h-full md:w-auto md:max-w-none md:-left-6 lg:left-0' />
-            <Image src={cylinder} alt="cylinder image" width={220} height={220} className='hidden md:block -top-8 -left-32 md:absolute'/>
-            <Image src={noodle} alt="noodle image" width={220} height={220} className='hidden lg:block absolute top-[524px] left-[448px] rotate-[30deg]'/>
+            <motion.img
+              src={cogImage.src}
+              alt="cog"
+              className='md:absolute md:h-full md:w-auto md:max-w-none md:-left-6 lg:left-0'
+              animate={{
+                translateY: [-30, 30],
+              }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "mirror",
+                duration: 3,
+                ease: "easeInOut"
+              }}
+            />
+
+            <Image src={cylinder} alt="cylinder image" width={220} height={220} className='hidden md:block -top-8 -left-32 md:absolute' />
+            <Image src={noodle} alt="noodle image" width={220} height={220} className='hidden lg:block absolute top-[524px] left-[448px] rotate-[30deg]' />
 
           </div>
         </div>
