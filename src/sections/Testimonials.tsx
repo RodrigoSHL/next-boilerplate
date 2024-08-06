@@ -7,6 +7,9 @@ import avatar6 from "@/assets/avatar-6.png";
 import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
+import Image from "next/image";
+import clsx from 'clsx';
+import { twMerge } from "tailwind-merge";
 
 const testimonials = [
   {
@@ -65,17 +68,49 @@ const testimonials = [
   },
 ];
 
+const firstColumn = testimonials.slice(0, 3);
+const secondColumn = testimonials.slice(3, 6);
+const thirdColumn = testimonials.slice(6, 9);
+
+const TestimonialsColumns = (props: { className?: string, testimonials: typeof testimonials }) => (
+  <div className={twMerge("flex flex-col gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]", props.className)}>
+    {
+      props.testimonials.map(({ text, imageSrc, name, username }, index) => (
+        <div className="card" key={index}>
+          <div>{text}</div>
+          <div className="flex items-center gap-2 mt-5">
+            <Image src={imageSrc} alt={name} width={40} height={40} className="rounded-full" />
+            <div className="flex flex-col">
+              <div className="font-medium tracking-tight leading-5">{name}</div>
+              <div className="leading-5 tracking-tight">{username}</div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+)
+
 export const Testimonials = () => {
   return (
     <section className="bg-white py-0">
       <div className="container">
-        <div className="flex justify-center">
-          <div className="tag">Testimonials</div>
+        <div className="section-heading">
+          <div className="flex justify-center">
+            <div className="tag">Testimonials</div>
+          </div>
+          <h2 className="section-title mt-5"> What our users say</h2>
+          <p className="section-description mt-5">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, consequatur! Iure, aut perspiciatis. Voluptatibus similique corrupti quia aut, adipisci aperiam.
+          </p>
         </div>
-        <h2 className="section-title mt-5"> What our users say</h2>
-        <p className="section-description mt-5">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, consequatur! Iure, aut perspiciatis. Voluptatibus similique corrupti quia aut, adipisci aperiam.
-        </p>
+
+        <div className="flex justify-center gap-6">
+          <TestimonialsColumns testimonials={firstColumn} />
+          <TestimonialsColumns testimonials={secondColumn} className={"hidden md:flex"} />
+          <TestimonialsColumns testimonials={thirdColumn} className={"hidden lg:flex"} />
+        </div>
+
       </div>
     </section>
   );
